@@ -1,0 +1,18 @@
+# Cloudflare Pages response headers for every page and file of kikaihq.com.
+# The CSP allows only this site's own files: no outside scripts, styles, fonts or frames, and no
+# inline styles or scripts (the pages use none; tools/check.py fails a page that does).
+# Strict-Transport-Security: HTTPS only for a year, subdomains included; Cloudflare serves every name in
+# the zone over HTTPS (Universal SSL). Browsers ignore it over the local preview's plain HTTP.
+/*
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Cross-Origin-Opener-Policy: same-origin
+  Permissions-Policy: accelerometer=(), autoplay=(), browsing-topics=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), xr-spatial-tracking=()
+
+# A week, not immutable: a widened subset keeps its file name (brand/fonts/README.md), so a year-long
+# immutable cache would keep the old glyphs.
+/assets/fonts/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400

@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects for kikaihq.com: path rules only. A whole domain (kikai.games) is sent on
+# by a Cloudflare Redirect Rule instead; see README.md.
+/studios   https://kikaistudios.com/  301
+/studios/  https://kikaistudios.com/  301
