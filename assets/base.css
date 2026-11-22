@@ -203,11 +203,11 @@ html.vt-theme::view-transition-new(root){animation:theme-in .62s var(--ease) bot
 }
 @keyframes head-lift{to{box-shadow:0 14px 34px -22px var(--lift)}}
 @media (prefers-reduced-motion:no-preference){
-  :is(.hero-copy,.page-hero>div:first-child,.studio-copy,.kq-copy,.game-copy,.hold-copy,.page-top,.legal,.lost)>*{animation:rise .8s var(--ease) both}
-  :is(.hero-copy,.page-hero>div:first-child,.studio-copy,.kq-copy,.game-copy,.hold-copy,.page-top,.legal,.lost)>:nth-child(2){animation-delay:70ms}
-  :is(.hero-copy,.page-hero>div:first-child,.studio-copy,.kq-copy,.game-copy,.hold-copy,.page-top,.legal,.lost)>:nth-child(3){animation-delay:140ms}
-  :is(.hero-copy,.page-hero>div:first-child,.studio-copy,.kq-copy,.game-copy,.hold-copy,.page-top,.legal,.lost)>:nth-child(4){animation-delay:210ms}
-  :is(.hero-copy,.page-hero>div:first-child,.studio-copy,.kq-copy,.game-copy,.hold-copy,.page-top,.legal,.lost)>:nth-child(n+5){animation-delay:280ms}
+  :is(.hero-copy,.page-hero>div:first-child,.studio-copy,.kq-copy,.game-copy,.hold-copy,.page-top,.legal,.lost:not(.lost-hq),.lost-copy)>*{animation:rise .8s var(--ease) both}
+  :is(.hero-copy,.page-hero>div:first-child,.studio-copy,.kq-copy,.game-copy,.hold-copy,.page-top,.legal,.lost:not(.lost-hq),.lost-copy)>:nth-child(2){animation-delay:70ms}
+  :is(.hero-copy,.page-hero>div:first-child,.studio-copy,.kq-copy,.game-copy,.hold-copy,.page-top,.legal,.lost:not(.lost-hq),.lost-copy)>:nth-child(3){animation-delay:140ms}
+  :is(.hero-copy,.page-hero>div:first-child,.studio-copy,.kq-copy,.game-copy,.hold-copy,.page-top,.legal,.lost:not(.lost-hq),.lost-copy)>:nth-child(4){animation-delay:210ms}
+  :is(.hero-copy,.page-hero>div:first-child,.studio-copy,.kq-copy,.game-copy,.hold-copy,.page-top,.legal,.lost:not(.lost-hq),.lost-copy)>:nth-child(n+5){animation-delay:280ms}
 }
 @keyframes rise{from{opacity:0;translate:0 14px}}
 @keyframes rise-art{from{opacity:0;translate:0 18px;scale:.985}}
@@ -236,12 +236,38 @@ html.vt-theme::view-transition-new(root){animation:theme-in .62s var(--ease) bot
 .card-link:hover,a.card:hover{transform:translateY(-2px)}
 .foot-nav a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .35s var(--ease)}
 .foot-nav a:hover{text-decoration:none;background-size:100% 1px}
+.pond{position:fixed;left:0;top:0;z-index:-1;display:block;width:100%;height:100vh;height:100lvh;pointer-events:none;
+  opacity:0;transition:opacity 1.4s var(--ease);--pond-a:var(--fg);--pond-b:var(--gun);--pond-r:var(--red);--pond-f:var(--muted);
+  --pond-u:var(--koi-u);--pond-o:var(--koi-o);--pond-g:var(--koi-g);--pond-k:var(--koi-k);
+  --pond-kinds:"kohaku ogon sanke showa yamabuki chagoi tancho"}
+.pond.on{opacity:1}
+.pond.now{transition:none}
+.pond-btn{display:inline-flex;align-items:center;gap:7px;flex:none;height:40px;padding:0 14px 0 12px;cursor:pointer;appearance:none;
+  font:500 var(--t-label)/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-pill);
+  transition:color .2s var(--ease),border-color .2s var(--ease),background-color .2s var(--ease)}
+.pond-btn:hover{color:var(--fg);border-color:var(--fg)}
+.pond-btn svg{width:11px;height:11px;fill:currentColor}
+.pond-btn .i-play,.pond-btn[aria-pressed="true"] .i-pause{display:none}
+.pond-btn[aria-pressed="true"] .i-play{display:inline}
+.pond-btn[aria-pressed="true"]{color:var(--fg)}
+@media (prefers-reduced-motion:no-preference){.pond-btn.pulse{animation:pond-ring .7s var(--ease)}}
+@keyframes pond-ring{from{box-shadow:0 0 0 0 color-mix(in srgb,var(--fg) 40%,transparent)}to{box-shadow:0 0 0 12px color-mix(in srgb,var(--fg) 0%,transparent)}}
+.pond-btn-free{position:fixed;right:var(--gutter);bottom:var(--gutter);z-index:30}
+@media (max-width:680px){.pond-btn{margin-left:auto}.pond-btn+.theme-btn{margin-left:0}}
+@media print{
+  .pond,.pond-btn,.theme-btn,.site-nav,.skip,.replay,.kun-pause,.seg{display:none!important}
+  .site-head{position:static;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .section{break-inside:avoid-page}
+  main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.85em;color:var(--muted)}
+}
 @media (forced-colors:active){
   .site-nav a[aria-current]{outline:1px solid CanvasText;outline-offset:-1px}
   .seg button[aria-pressed="true"],.kun-pause[aria-pressed="true"]{forced-color-adjust:none;background:Highlight;color:HighlightText}
   .seg,.board,.status{border:1px solid CanvasText}
   .kun-pause{border:1px solid ButtonText}
   .board.panel,.kit-art{forced-color-adjust:none}
+  .pond,.pond-btn{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}

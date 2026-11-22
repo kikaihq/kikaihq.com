@@ -89,6 +89,12 @@
 .lost h1{margin-top:var(--s3)}
 .lost .lede{margin-top:var(--s4)}
 .lost .btns{margin-top:var(--s6)}
+.lost-hq{display:grid;gap:var(--s7);align-items:center;padding-top:var(--s8)}
+.lost-board{aspect-ratio:1/1;display:grid;place-items:center;width:100%;max-width:320px;justify-self:center;margin:0}
+.lost-board svg{width:192px;height:192px}
+.lost-board .mod{opacity:.26}
+@media (min-width:920px){.lost-hq{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:var(--s8);padding-top:var(--s9)}.lost-board{max-width:400px;justify-self:end}.lost-board svg{width:256px;height:256px}}
+@media (prefers-reduced-motion:no-preference){.lost-hq>.lost-board{animation:rise-art 1s var(--ease) .16s both}}
 .plate{transition:transform .6s var(--ease)}
 .plate.tilting{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .12s linear}
 .plate::before,.plate::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none}
@@ -104,3 +110,7 @@
 .brand .lockup .core{transition:fill .2s var(--ease)}
 .brand:hover .lockup .core,.brand:focus-visible .lockup .core{fill:var(--red-on-ink)}
 @media (prefers-reduced-motion:no-preference){.brand:hover .lockup .core,.brand:focus-visible .lockup .core{animation:coreOn .45s steps(3,end) both}}
+:root{--hq-pond:.3}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--hq-pond:.25}}
+:root[data-theme="light"]{--hq-pond:.25}
+.pond{--pond-tone:var(--hq-pond);--pond-near:0;--pond-under:0;--pond-kinds:"asagi kohaku sanke ogon showa yamabuki shusui chagoi"}

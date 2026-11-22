@@ -20,6 +20,8 @@
   --grid:rgba(233,228,216,.045);
   --scrim:rgba(17,19,23,.88);
   --lift:rgba(0,0,0,.55);
+  --pond-tone:.78;
+  --koi-u:#2AB7AB; --koi-o:#E8843E; --koi-g:#D8AA4C; --koi-k:#A68262;
   color-scheme:dark;
   --f-sans:"IBM Plex Sans","IBM Plex Sans JP","Segoe UI",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
@@ -53,6 +55,7 @@
     --notice-fg:#6E4C06; --notice-bg:#E9DFC2;
     --btn-bg:#1E1D1A; --btn-fg:#EEEADD;
     --ring:transparent; --grid:rgba(23,24,28,.055); --scrim:rgba(228,223,208,.9); --lift:rgba(58,48,28,.22);
+    --pond-tone:.7; --koi-u:#12968E; --koi-o:#BF621F; --koi-g:#96741A; --koi-k:#7A5A3C;
     color-scheme:light;
   }
 }
@@ -62,5 +65,6 @@
   --notice-fg:#6E4C06; --notice-bg:#E9DFC2;
   --btn-bg:#1E1D1A; --btn-fg:#EEEADD;
   --ring:transparent; --grid:rgba(23,24,28,.055); --scrim:rgba(228,223,208,.9); --lift:rgba(58,48,28,.22);
+  --pond-tone:.7; --koi-u:#12968E; --koi-o:#BF621F; --koi-g:#96741A; --koi-k:#7A5A3C;
   color-scheme:light;
 }
